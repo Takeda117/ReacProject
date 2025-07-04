@@ -1,0 +1,77 @@
+*::before,
+*::after {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* HTML e Body */
+html {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+/* Root container */
+#root {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+/* Container Bootstrap override */
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl,
+.container-xxl {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+}
+
+/* Row Bootstrap override */
+.row {
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Col Bootstrap override */
+[class*="col-"] {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Fix per viewport */
+@media screen and (max-width: 100vw) {
+  html,
+  body,
+  #root {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* Debug - Rimuovi dopo aver risolto */
+/* * {
+    border: 1px solid red !important;
+} */
