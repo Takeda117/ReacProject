@@ -6,7 +6,7 @@ const NewCharacterButton = ({ onClick, className = "", buttonText}) => (
     className={`${styles.newCharacterBtn} ${className}`}
     onClick={onClick}
     type="button"
-    buttonText = "Crea nuovo personaggio" //default
+    buttonText = {"Crea nuovo personaggio"} //default
 >
     {buttonText}
 </button>

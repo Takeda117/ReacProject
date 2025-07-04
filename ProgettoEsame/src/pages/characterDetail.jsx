@@ -270,14 +270,12 @@ switch (step) {
         buttonNextText="Avanti"
         buttonPreviousText="Indietro"
         onPrevious={goToPreviousStep}
-        disablePrevious={step === 1}
+
         />
     );
     case 3:
     return (
-        <><button className={styles.button} onClick={() => setStep(1)}>
-            Crea nuovo personaggio
-        </button>
+        <>
         <SelectStep
         label="Seleziona Talenti:"
         options={talents}
@@ -290,7 +288,6 @@ switch (step) {
         buttonNextText="Avanti"
         buttonPreviousText="Indietro"
         onPrevious={goToPreviousStep}
-        disablePrevious={step === 1}
         multiple={true}
         size={Math.min(5, talents.length)}
         
@@ -314,7 +311,6 @@ switch (step) {
         buttonNextText="Avanti"
         buttonPreviousText="Indietro"
         onPrevious={goToPreviousStep}
-        disablePrevious={step === 1}
         multiple={true}
         size={Math.min(5, equipment.length)}
         
@@ -334,7 +330,7 @@ switch (step) {
         </ul>
         {/* Qui metterai la scheda visiva */}
         <NewCharacterButton
-        onClick={resetCharacter}>Ciao</NewCharacterButton>
+        onClick={resetCharacter} buttonText={"Crea nuovo personaggio"}/>
         </div>
     );
     default:

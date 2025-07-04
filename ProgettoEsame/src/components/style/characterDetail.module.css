@@ -1,0 +1,382 @@
+/* CharacterDetail.module.css */
+
+/* Import font medievali */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&display=swap");
+
+/* Variabili tema D&D */
+:root {
+  --primary-dark: #1a0f0a;
+  --primary-brown: #3d2914;
+  --secondary-brown: #8b4513;
+  --accent-gold: #d4af37;
+  --accent-red: #8b0000;
+  --accent-copper: #b87333;
+  --text-light: #f4f1e8;
+  --text-gold: #ffd700;
+  --shadow-dark: 0 4px 8px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 15px rgba(212, 175, 55, 0.4);
+  --border-ornate: 2px solid var(--accent-gold);
+}
+
+/* Reset per eliminare spazi bianchi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout principale */
+.appLayout {
+  display: flex !important;
+  min-height: 100vh !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-brown) 50%,
+    var(--secondary-brown) 100%
+  );
+  background-attachment: fixed;
+  font-family: "Cinzel", serif;
+  color: var(--text-light);
+  position: relative;
+  overflow-x: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Texture overlay */
+.appLayout::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(
+      circle at 20% 50%,
+      rgba(212, 175, 55, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(139, 0, 0, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main content area */
+.main {
+  flex: 1;
+  padding: 3rem 2rem;
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Titolo principale */
+.title {
+  font-family: "Cinzel Decorative", serif !important;
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  color: var(--accent-gold) !important;
+  text-align: center !important;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8) !important;
+  margin-bottom: 3rem !important;
+  position: relative;
+  animation: titleGlow 3s ease-in-out infinite;
+}
+
+.title::after {
+  content: "⚔️ ✨ 🎲 ✨ ⚔️";
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Container per step progressivi */
+.stepContainer {
+  background: linear-gradient(
+    135deg,
+    rgba(61, 41, 20, 0.95),
+    rgba(139, 69, 19, 0.9)
+  );
+  border: 3px solid var(--accent-gold);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: var(--shadow-dark), var(--shadow-glow);
+  backdrop-filter: blur(10px);
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+/* Decorazione interna */
+.stepContainer::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 15px;
+  pointer-events: none;
+}
+
+/* Indicatore step */
+.stepIndicator {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary-brown);
+  color: var(--accent-gold);
+  padding: 8px 20px;
+  border-radius: 25px;
+  border: 2px solid var(--accent-gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Progress bar */
+.progressBar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--accent-copper);
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-gold), var(--text-gold));
+  border-radius: 4px;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* Bottone generale */
+.button {
+  background: linear-gradient(135deg, var(--accent-gold), var(--accent-copper));
+  color: var(--primary-dark) !important;
+  border: 2px solid var(--accent-gold);
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-dark);
+  margin: 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 120px;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, var(--text-gold), var(--accent-gold));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow), var(--shadow-dark);
+  border-color: var(--text-gold);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #666;
+  box-shadow: none;
+}
+
+.button:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* Container bottoni */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Recap finale del personaggio */
+.characterSummary {
+  background: linear-gradient(
+    135deg,
+    rgba(26, 15, 10, 0.95),
+    rgba(61, 41, 20, 0.9)
+  );
+  border: 3px solid var(--accent-gold);
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: var(--shadow-dark), var(--shadow-glow);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.characterSummary h2 {
+  color: var(--accent-gold);
+  font-family: "Cinzel Decorative", serif;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.characterSummary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.characterSummary li {
+  background: rgba(139, 69, 19, 0.3);
+  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.characterSummary li:hover {
+  background: rgba(139, 69, 19, 0.5);
+  transform: translateX(5px);
+}
+
+.characterSummary li b {
+  color: var(--text-gold);
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Animazioni */
+@keyframes titleGlow {
+  0%,
+  100% {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+      0 0 20px rgba(212, 175, 55, 0.3);
+  }
+  50% {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8),
+      0 0 30px rgba(212, 175, 55, 0.6);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stepContainer {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Responsive design */
+@media (max-width: 992px) {
+  .appLayout {
+    flex-direction: column !important;
+  }
+
+  .main {
+    padding: 2rem 1rem;
+  }
+
+  .stepContainer {
+    padding: 2rem;
+    margin: 0 1rem 2rem 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .stepContainer {
+    padding: 1.5rem;
+    margin: 0 0.5rem 1.5rem 0.5rem;
+  }
+
+  .title {
+    font-size: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 576px) {
+  .stepContainer {
+    padding: 1.25rem;
+  }
+
+  .characterSummary {
+    padding: 1.5rem;
+  }
+
+  .characterSummary h2 {
+    font-size: 1.5rem;
+  }
+
+  .characterSummary li {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+}

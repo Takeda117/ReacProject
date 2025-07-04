@@ -1,4 +1,4 @@
-// src/utils/localStorage.js
+// src/redux/localStorage.js
 
 const STORAGE_KEY = 'characterProgress';
 
