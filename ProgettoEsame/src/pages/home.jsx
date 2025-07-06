@@ -35,7 +35,7 @@ const Home = () => (
             <h2 className={styles.cardTitle}>Login</h2>
             <p className={styles.cardText}>Accedi per salvare e gestire i tuoi dati.</p>
         </Link>
-        <Link to="/admin" className={styles.card}>
+        <Link to="/AdminDashboard" className={styles.card}>
             <h2 className={styles.cardTitle}>Admin Dashboard</h2>
             <p className={styles.cardText}>Gestisci homebrew e contenuti extra.</p>
         </Link>

@@ -8,13 +8,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 // Import relativo e case corretto per la Home
-import Home from './pages/home';
+import Home from './pages/Home';
 import CharacterDetail from './pages/characterDetail';
 // import CharacterGenerator from './pages/characterGenerator';
 // import Spells from './pages/spells';
 // import Equipment from './pages/equipment';
 // import MyCharacters from './pages/myCharacters';
-// import Login from './pages/login';
+import Login from './pages/Login';
+import Register from './pages/Register';
 // import AdminDashboard from './pages/adminDashboard';
 
 function App() {
@@ -24,13 +25,15 @@ function App() {
         {/* Route principale */}
         <Route path="/" element={<Home />} />
         <Route path="/generator" element={<CharacterDetail />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
 
         {/* Altre rotte
         
         <Route path="/spells" element={<Spells />} />
         <Route path="/equipment" element={<Equipment />} />
         <Route path="/my-characters" element={<MyCharacters />} />
-        <Route path="/login" element={<Login />} />
+    
         <Route path="/admin" element={<AdminDashboard />} /> */}
 
         {/* Catch‑all: redirect alla home */}

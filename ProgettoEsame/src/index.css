@@ -75,3 +75,44 @@ body {
 /* * {
     border: 1px solid red !important;
 } */
+
+/* New Character Button */
+.newCharacterBtn {
+  background: linear-gradient(135deg, var(--accent-red), #a00000);
+  color: var(--text-light) !important;
+  border: 2px solid var(--accent-red);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-dark);
+  margin: 1rem auto;
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  max-width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.newCharacterBtn:hover {
+  background: linear-gradient(135deg, #a00000, #c00000);
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.6), var(--shadow-dark);
+  border-color: #ff4444;
+}
+
+.newCharacterBtn::before {
+  content: "🗡️ ";
+  margin-right: 0.5rem;
+}
+
+.newCharacterBtn::after {
+  content: " 🗡️";
+  margin-left: 0.5rem;
+}

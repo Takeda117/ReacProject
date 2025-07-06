@@ -1,42 +1,3 @@
-// import { Link } from 'react-router-dom';
-// import styles from '../component/style/characterDetail.module.css'
-// import Sidebar from '../component/Sidebar';
-// import {useState } from 'react';
-
-
-// const CharacterDetail = () => {
-// const [selectRace, setSelectRace] = useState('');
-
-// return (
-//     <div className={styles.appLayout}>
-//         <Sidebar/>
-//     <main className={styles.main}>
-//     <h1 className={styles.title}>Character Creator</h1>
-//     <form className={styles.form} onSubmit={CharacterDetail}>
-//     <div className={styles.field}>
-//         <label htmlFor='race'>-- Seleziona Razza --</label>
-//         <select id='race' value={selectRace} onChange={event => setSelectRace(event.target.value)}>
-//             <option value=''>-- Seleziona Classe --</option>
-//             <option value=''>-- Seleziona Talenti --</option>
-//             <option value=''>-- Seleziona Background --</option>
-//             {classes.map(c => (
-//                   <option key={c.index} value={c.index}>{c.name}</option> //rivedere
-//                 ))}
-//         </select>  
-    
-//             <button type="submit" className={styles.button}>Genera</button>
-//     </div>
-//     </form>
-//     </main>
-//     </div>
-
-//     );
-
-
-
-// };
-
-
 // export default CharacterDetail;
 
 import React, { useState, useEffect } from "react";
@@ -50,7 +11,7 @@ fetchEquipment,
 fetchTalents
 } from "../api/api";
 import { saveProgress, loadProgress, clearCharacterProgress } from "../redux/LocalStorage";
-import NewCharacterButton from "../components/NewCharacterButton";
+import {GenericButton} from "../components/GenericButton";
 
 const CharacterDetail = () => {
 // Carica dal localStorage, oppure usa stato iniziale
@@ -232,7 +193,7 @@ setStep(5);
 };
 
 // Handler step 5: Nome
-const handleNextName = event => {
+const handleName = event => {
 event.preventDefault();
 if (selectedName.length === 0) {
     setError("Seleziona il nome del Personaggio");
@@ -345,7 +306,7 @@ switch (step) {
             <li><b>Equipaggiamento:</b> {selectedEquipment.join(", ")}</li>
         </ul>
         {/* Qui metterai la scheda visiva */}
-        <NewCharacterButton
+        <GenericButton className={styles.newCharacterBtn}
         onClick={resetCharacter} buttonText={"Crea nuovo personaggio"}/>
         </div>
     );
