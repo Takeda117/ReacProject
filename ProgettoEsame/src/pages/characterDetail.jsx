@@ -49,7 +49,7 @@ fetchClasses,
 fetchEquipment,
 fetchTalents
 } from "../api/api";
-import { saveProgress, loadProgress } from "../redux/localStorage";
+import { saveProgress, loadProgress, clearCharacterProgress } from "../redux/LocalStorage";
 import NewCharacterButton from "../components/NewCharacterButton";
 
 const CharacterDetail = () => {
@@ -77,6 +77,11 @@ const [isLoadingTalents, setIsLoadingTalents] = useState(false);
 const [equipment, setEquipment] = useState([]);
 const [selectedEquipment, setSelectedEquipment] = useState(savedProgress.selectedEquipment || []);
 const [isLoadingEquipment, setIsLoadingEquipment] = useState(false);
+
+// Nome
+const [Name, setName] = useState([]);
+const [selectedName, setSelectedName] = useState(savedProgress.selectedName || []);
+
 
 // Errori generici
 const [error, setError] = useState("");
@@ -179,7 +184,7 @@ const resetCharacter = () => {
     setSelectedTalents([]);
     setSelectedEquipment([]);
     setError("");
-    localStorage.removeItem("characterProgress");
+    clearCharacterProgress();
 };
 
 // Handler step 1: razza
@@ -224,6 +229,17 @@ if (selectedEquipment.length === 0) {
 }
 setError("");
 setStep(5);
+};
+
+// Handler step 5: Nome
+const handleNextName = event => {
+event.preventDefault();
+if (selectedName.length === 0) {
+    setError("Seleziona il nome del Personaggio");
+    return;
+}
+setError("");
+setStep(6);
 };
 
 // Handler di selezione multipla per talenti/equip
@@ -332,6 +348,13 @@ switch (step) {
         <NewCharacterButton
         onClick={resetCharacter} buttonText={"Crea nuovo personaggio"}/>
         </div>
+    );
+    case 6:
+    return (
+        <>
+        {/* mettere form per richiesta nome */}
+</>
+
     );
     default:
     return null;

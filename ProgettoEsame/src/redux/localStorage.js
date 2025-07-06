@@ -1,12 +1,18 @@
 // src/redux/localStorage.js
 
-const STORAGE_KEY = 'characterProgress';
+
+
+export const CHARACTER_PROGRESS_KEY = "characterProgress";
 
 export const saveProgress = (data) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    localStorage.setItem(CHARACTER_PROGRESS_KEY, JSON.stringify(data));
 };
 
 export const loadProgress = () => {
-    const data = localStorage.getItem(STORAGE_KEY);
+    const data = localStorage.getItem(CHARACTER_PROGRESS_KEY);
     return data ? JSON.parse(data) : null;
+};
+
+export const clearCharacterProgress = () => {
+    localStorage.removeItem(CHARACTER_PROGRESS_KEY);
 };
